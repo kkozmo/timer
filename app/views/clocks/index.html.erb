@@ -1,0 +1,44 @@
+<h1>Programming Hours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Total Time </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+<% @clocks.each do |clock| %> 
+  <tr>
+    <td><%= clock.day %></td>
+    <td><% if (clock.time_end - clock.time_start) < 60 %> 
+          <%= (clock.time_end - clock.time_start).round(2) %>
+            <% if  clock.present? %>
+              <%= "Seconds" %>
+            <% end %> 
+       <% elsif ((clock.time_end - clock.time_start) / 60) > 60 %>  
+          <%= ((clock.time_end - clock.time_start) / 3600).round(2) %>
+            <% if  clock.present? %>
+              <%= "Hours" %>
+            <% end %> 
+      <% else %>
+          <%= ((clock.time_end - clock.time_start) / 60).round(2) %>  
+            <% if  clock.present? %>
+              <%= "Minutes" %>
+            <% end %> 
+      <% end %>
+      <td><%= link_to 'Show', clock %></td>
+      <td><%= link_to 'Edit', edit_clock_path(clock) %></td> 
+      <td><%= link_to 'Destroy', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
+      <% end %></td>
+    </tr>
+</tbody>
+</table>
+<br>
+<br>
+
+<%= link_to 'Clock In', new_clock_path %>
+
+
