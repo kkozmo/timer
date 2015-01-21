@@ -1,44 +1,53 @@
 <h1>Programming Hours</h1>
 
-<table>
+<div class= "col-md-6">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Day</th>
       <th>Total Time </th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
 <tbody>
-<% @clocks.each do |clock| %> 
+<% Clock.reverse_time.each do |clock| %> 
+<% total_time = (clock.time_end - clock.time_start) %> 
   <tr>
     <td><%= clock.day %></td>
-    <td><% if (clock.time_end - clock.time_start) < 60 %> 
-          <%= (clock.time_end - clock.time_start).round(2) %>
+    <td><% if (total_time) < 60 %> 
+          <%= (total_time).round(2) %>
             <% if  clock.present? %>
               <%= "Seconds" %>
             <% end %> 
-       <% elsif ((clock.time_end - clock.time_start) / 60) > 60 %>  
-          <%= ((clock.time_end - clock.time_start) / 3600).round(2) %>
+       <% elsif ((total_time) / 60) > 60 %>  
+          <%= ((total_time) / 3600).round(2) %>
             <% if  clock.present? %>
               <%= "Hours" %>
             <% end %> 
       <% else %>
-          <%= ((clock.time_end - clock.time_start) / 60).round(2) %>  
+          <%= ((total_time) / 60).round(2) %>  
             <% if  clock.present? %>
               <%= "Minutes" %>
             <% end %> 
-      <% end %>
-      <td><%= link_to 'Show', clock %></td>
-      <td><%= link_to 'Edit', edit_clock_path(clock) %></td> 
-      <td><%= link_to 'Destroy', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
+      <% end %></td>
+      <td><%= link_to 'Show', clock %>
+      <%= link_to 'Edit', edit_clock_path(clock) %> 
+      <%= link_to 'Destroy', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
       <% end %></td>
     </tr>
 </tbody>
 </table>
-<br>
-<br>
+</div>
 
-<%= link_to 'Clock In', new_clock_path %>
+<div class= "col-md-6">
+<div class= "hero"> 
+<p><h1>Total Time Spent Learning</h1><p>
+<p><h1><%= Clock.total_time %></h1></p>
+<p><h1><%= link_to 'Clock In', new_clock_path %></h1></p>
+</div> 
+</div>
+
+
 
 
