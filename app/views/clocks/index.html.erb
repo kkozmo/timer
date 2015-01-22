@@ -14,7 +14,7 @@
 <% Clock.reverse_time.each do |clock| %> 
 <% total_time = (clock.time_end - clock.time_start) %> 
   <tr>
-    <td><%= clock.day %></td>
+    <td><%= clock.day.strftime('%a %b %d') %></td>
     <td><% if (total_time) < 60 %> 
           <%= (total_time).round(2) %>
             <% if  clock.present? %>
@@ -31,9 +31,9 @@
               <%= "Minutes" %>
             <% end %> 
       <% end %></td>
-      <td><%= link_to 'Show', clock %>
-      <%= link_to 'Edit', edit_clock_path(clock) %> 
-      <%= link_to 'Destroy', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
+      <td>
+      <%= link_to 'ClockOut', edit_clock_path(clock) %></td>
+      <td><%= link_to 'Delete', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
       <% end %></td>
     </tr>
 </tbody>

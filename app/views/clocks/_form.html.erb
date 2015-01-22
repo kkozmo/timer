@@ -11,19 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :day %><br>
     <%= f.date_select :day %>
   </div>
-  <div class="field">
+
+
+  <div class="form-group">
     <%= f.label :time_start %><br>
-    <%= f.time_select :time_start %>
+    <%= f.time_select :time_start, {ampm: true} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :time_end %><br>
-    <%= f.time_select :time_end %>
+    <%= f.time_select :time_end, {ampm: true} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

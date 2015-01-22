@@ -1,19 +1,16 @@
+<div class="jumbotron center" >
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Day:</strong>
-  <%= @clock.day %>
+  <%= @clock.day.strftime('%a %b %d') %>
 </p>
 
 <p>
-  <strong>Time start:</strong>
-  <%= @clock.time_start.in_time_zone("Pacific Time (US & Canada)") %>
-</p>
-
-<p>
-  <strong>Time end:</strong>
-  <%= @clock.time_end.in_time_zone("Pacific Time (US & Canada)")  %>
+  <strong>Start Time:</strong>
+  <%= @clock.time_start.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M:%S %p")  %>
 </p>
 
 <%= link_to 'Edit', edit_clock_path(@clock) %> |
 <%= link_to 'Back', clocks_path %>
+</div>
