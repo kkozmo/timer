@@ -1,4 +1,5 @@
 class Clock < ActiveRecord::Base
+  belongs_to :user 
   def self.total_time
     total = 0
      all.each do |clock|
