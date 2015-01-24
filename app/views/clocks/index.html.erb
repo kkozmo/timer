@@ -14,7 +14,7 @@
   </thead>
 
 <tbody>
-<% current_user.clocks.each do |clock| %> 
+<% current_user.clocks.reverse.each do |clock| %> 
 <% total_time = (clock.time_end - clock.time_start) %> 
   <tr>
     <td><%= clock.day.strftime('%a %b %d') %></td>
@@ -46,7 +46,7 @@
 <div class= "col-md-6">
 <div class= "hero"> 
 <p><h1>Total Time Spent Learning</h1><p>
-<p><h1><%= Clock.total_time %></h1></p>
+<p><h1><%= current_user.clocks.total_time %> Hours</h1></p>
 <p><h1><%= link_to 'Clock In', new_clock_path %></h1></p>
 </div> 
 </div>
