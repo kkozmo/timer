@@ -1,10 +1,12 @@
 class ClocksController < ApplicationController
   before_action :set_clock, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /clocks
   # GET /clocks.json
   def index
-    @clocks = Clock.all
+    @clocks = current_user.clocks.all
   end
 
   # GET /clocks/1
@@ -14,7 +16,7 @@ class ClocksController < ApplicationController
 
   # GET /clocks/new
   def new
-    @clock = Clock.new(:time_start => Time.now, :time_end => Time.now)
+    @clock = current_user.clocks.build
   end
 
   # GET /clocks/1/edit
@@ -24,7 +26,7 @@ class ClocksController < ApplicationController
   # POST /clocks
   # POST /clocks.json
   def create
-    @clock = Clock.new(clock_params)
+    @clock = current_user.clocks.build(clock_params)
 
     respond_to do |format|
       if @clock.save
@@ -66,6 +68,12 @@ class ClocksController < ApplicationController
     def set_clock
       @clock = Clock.find(params[:id])
     end
+
+    def correct_user
+      @clock = current_user.clocks.find_by(id: params[:id])
+      redirect_to roots_path notice: "Not Authorized to edit this clock" if @clock.nil?
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clock_params

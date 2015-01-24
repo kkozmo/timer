@@ -16,16 +16,14 @@
     <%= f.date_select :day %>
   </div>
 
-
   <div class="form-group">
     <%= f.label :time_start %><br>
     <%= f.time_select :time_start, {ampm: true} %>
   </div>
   <div class="form-group">
-    <%= f.label :time_end %><br>
-    <%= f.time_select :time_end, {ampm: true} %>
+    <%= f.hidden_field :time_end, :value => Time.now %> 
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

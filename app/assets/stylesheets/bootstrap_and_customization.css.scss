@@ -1,5 +1,45 @@
 @import 'bootstrap'; 
 
+
+$body-bg: 												#ecf0f1;
+$font-family-sans-serif: 								'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+$navbar-height: 										45px;
+$navbar-default-bg:									    white; 
+$navbar-default-brand-color: 							#c0392b;
+$brand-primary:						    				#c0392b;
+$jumbotron-bg: 											white;
+
+
+
+
+/* home */ 
+
+
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.herohome {
+	text-align: center; 
+	margin-top: 300px;
+	color: white;
+}
+
 .hero {
 	text-align: center; 
 	margin-top: 200px;
@@ -8,6 +48,10 @@
 .center { 
 	text-align: center; 
 	}
+
+.navbar-brand {
+	font-weight: bold;
+}
 
 /* forms */ 
 
