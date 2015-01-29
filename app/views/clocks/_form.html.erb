@@ -21,7 +21,7 @@
     <%= f.time_select :time_start, {ampm: true} %>
   </div>
   <div class="form-group">
-    <%= f.hidden_field :time_end, :value => Time.now %> 
+    <%= f.hidden_field :time_end, :value => Time.zone.now %> 
   </div>
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-primary" %>
