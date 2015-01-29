@@ -8,7 +8,7 @@
 
 <p>
   <strong>Start Time:</strong>
-  <%= @clock.time_start.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M:%S %p")  %>
+  <%= @clock.time_start.strftime("%I:%M:%S %p")  %>
 </p>
 
 <%= link_to 'Edit', edit_clock_path(@clock) %> |
