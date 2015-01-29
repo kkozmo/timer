@@ -1,49 +1,33 @@
 require 'test_helper'
 
 class ClocksControllerTest < ActionController::TestCase
-  setup do
-    @clock = clocks(:one)
-  end
 
-  test "should get index" do
-    get :index
+
+def setup 
+  @user = User.find(1)
+  @clock = Clock.find(1)
+end 
+
+  test "index at clocks works" do 
+    assert_equal 1, @user.id
+    assert_equal "kyle@example.com", @user.email
+    assert_equal 1, @clock.id 
+  end 
+
+  def test_index_not_signed_in 
+    get :index 
+    assert root_path 
+  end 
+
+  def test_index_signed_in 
+    sign_in @user 
+    get :index 
     assert_response :success
-    assert_not_nil assigns(:clocks)
-  end
+  end 
 
-  test "should get new" do
-    get :new
+  def test_create
+    sign_in @user 
+    get :create 
     assert_response :success
-  end
-
-  test "should create clock" do
-    assert_difference('Clock.count') do
-      post :create, clock: { day: @clock.day, time_end: @clock.time_end, time_start: @clock.time_start }
-    end
-
-    assert_redirected_to clock_path(assigns(:clock))
-  end
-
-  test "should show clock" do
-    get :show, id: @clock
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @clock
-    assert_response :success
-  end
-
-  test "should update clock" do
-    patch :update, id: @clock, clock: { day: @clock.day, time_end: @clock.time_end, time_start: @clock.time_start }
-    assert_redirected_to clock_path(assigns(:clock))
-  end
-
-  test "should destroy clock" do
-    assert_difference('Clock.count', -1) do
-      delete :destroy, id: @clock
-    end
-
-    assert_redirected_to clocks_path
-  end
+  end 
 end

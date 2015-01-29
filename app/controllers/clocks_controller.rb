@@ -1,12 +1,11 @@
 class ClocksController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_user!
   before_action :set_clock, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /clocks
   # GET /clocks.json
   def index
-    @clocks = current_user.clocks.all
   end
 
   # GET /clocks/1

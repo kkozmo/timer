@@ -1,11 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1 
   day: 2015-01-13
   time_start: 2015-01-13 11:37:20
   time_end: 2015-01-13 11:37:20
+  user_id: 1
 
 two:
+  id: 2
   day: 2015-01-13
   time_start: 2015-01-13 11:37:20
-  time_end: 2015-01-13 11:37:20
+  time_end: 2015-01-13 16:37:20
+  user_id: 1 
+
+three:
+  id: 3
+  day: 2015-01-13
+  time_start: 2015-01-13 11:37:20
+  time_end: 2015-01-13 12:37:20
+  user_id: 2 
