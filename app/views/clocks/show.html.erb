@@ -11,6 +11,11 @@
   <%= @clock.time_start.strftime("%I:%M:%S %p")  %>
 </p>
 
+<p>
+  <strong> Notes </strong> 
+  <%= @clock.notes %> 
+</p>
+
 <%= link_to 'Edit', edit_clock_path(@clock) %> |
 <%= link_to 'Back', clocks_path %>
 </div>

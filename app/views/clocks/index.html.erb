@@ -9,7 +9,10 @@
     <tr>
       <th>Day</th>
       <th>Total Time </th>
-      <th>Actions</th>
+      <th>Actions<th>
+      <th>Notes</th>
+
+
     </tr>
   </thead>
 
@@ -36,8 +39,9 @@
       <% end %></td>
       <td>
       <%= link_to 'ClockOut', edit_clock_path(clock) %></td>
-      <td><%= link_to 'Delete', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %> 
-      <% end %></td>
+      <td><%= link_to 'Delete', clock, :method => :delete, :data => { :confirm => "Are you sure?" } %></td>
+      <td><%=clock.notes%> 
+      <% end %>
     </tr>
 </tbody>
 </table>
